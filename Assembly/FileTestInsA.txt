@@ -1,0 +1,16 @@
+addi x1, x0, 11
+addi x2, x0, 12
+addi x9, x0, 12
+addi x10, x0, 33
+addi x11, x0, 40
+addi x12, x0, -10
+addi x14, x0, 34
+addi x15, x0, 5
+sw x10, 0, x0  		# memoria[0..3] = 33
+sw x11, 4, x0  		# memoria[4..7] = 40
+sw x14, 16, x0		# memoria[16..19] = 34
+sw x12, 12, x0		# memoria[12..15] = -10
+sw x2, 0, x31
+lr.w x11, x31		#x11 = 5		
+sc.w x4, x12, x31	#x4 = 0, addr x31 = -10
+amoxor.w x20, x1, x0	#x20 = 33, addr x0 = 2A

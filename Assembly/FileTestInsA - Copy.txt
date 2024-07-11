@@ -1,0 +1,30 @@
+addi x1, x0, 11
+addi x2, x0, 12
+addi x9, x0, 12
+addi x10, x0, 33
+addi x11, x0, 40
+addi x12, x0, -10
+addi x14, x0, 34
+addi x15, x0, 5
+sw x10, 0, x0  		# memoria[0..3] = 33
+sw x11, 4, x0  		# memoria[4..7] = 40
+sw x14, 16, x0		# memoria[16..19] = 34
+sw x12, 12, x0		# memoria[12..15] = -10
+sw x2, 0, x31
+lr.w x11, x31		#x11 = 5
+amoxor.w x20, x1, x0	#x20 = 33, addr x0 = 2A
+amoadd.w x21, x15, x14	#x21 = 0, addr x14 = 5
+amoand.w x22, x12, x0	#x22 = 2A, addr x0 = 34
+amoor.w x23, x2, x3	#x23 = 0, addr x3 = 2
+amomaxu.w x24, x11, x0	#x24 = 34, addr x0 = 40
+amomaxu.w x25, x12, x14	#x25 = 5, addr x14 = -10
+amomin.w x26, x11, x0	#x26 = 40, addr x0 = 40
+amomin.w x27, x12, x14	#x27 = -10, addr x14 = -10
+lr.w x28, x0		#x28 = 40
+amoswap.w x29, x15 , x0 #x29 = 40, addr x0 = 5
+sc.w x30, x12, x0	#x30 = 0, addr x0 = -10
+sc.w x31, x12, x5	#x31 = 1, addr x5 = -10
+lr.w x1, x5		#x1 = -10		// hiệu chỉnh aq = 0, rl = 0
+sw x2, 0, x5		#addr x5 = 12		// store vào thanh ghi đã được đánh đáu
+lw x3, 0, x5		#x3 = 12
+sc.w x31, x12, x5 				// hiệu chỉnh aq = 0, rl = 0
